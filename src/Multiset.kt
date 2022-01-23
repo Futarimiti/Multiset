@@ -5,14 +5,39 @@
  */
 class Multiset<E>
 {
-    /**
-     * stores distinct elements in this multiset.
-     */
-    val elements : MutableList<E> = mutableListOf()
+	/**
+	 * stores distinct elements in this multiset.
+	 */
+	val elements : MutableList<E> = mutableListOf()
 
-    /**
-     * stores multiplicity, or frequencies of every element
-     * indices corresponding to $elements.
-     */
-    val multiplicity : MutableList<Int> = mutableListOf()
+	/**
+	 * stores multiplicity, or frequencies of every element
+	 * indices corresponding to $elements.
+	 */
+	val multiplicity : MutableList<Int> = mutableListOf()
+
+	/**
+	 * adds an element to this multiset with specified multiplicity (by default 1).
+	 */
+	fun add(elem : E , freq : Int = 1)
+	{
+		when
+		{
+			// filter illegal args
+			(freq < 0) -> throw IllegalArgumentException("Element frequency cannot be negative: $freq")
+			(freq == 0) -> return
+			else -> when (val index : Int = elements.indexOf(elem))
+			{
+				// new element for this multiset
+				-1 ->
+				{
+					elements += elem
+					multiplicity += freq
+				}
+
+				// not a new element, add $freq only
+				else -> multiplicity[index] += freq
+			}
+		}
+	}
 }
