@@ -1,3 +1,8 @@
+/**
+ * represents a multiset:
+ * a modification of set that allows for multiple instances for each of its elements.
+ * ref: https://en.wikipedia.org/wiki/Multiset
+ */
 class Multiset<E>
 {
     /**
