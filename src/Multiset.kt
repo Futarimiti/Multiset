@@ -18,13 +18,15 @@ class Multiset<E>
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
+	 * multiplicity should be at least 0.
+	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
 	fun add(elem : E , freq : Int = 1)
 	{
 		when
 		{
 			// filter illegal args
-			(freq < 0) -> throw IllegalArgumentException("Element frequency cannot be negative: $freq")
+			(freq < 0) -> throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
 			(freq == 0) -> return
 			else -> when (val index : Int = elements.indexOf(elem))
 			{
