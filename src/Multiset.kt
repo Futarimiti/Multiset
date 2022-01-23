@@ -1,4 +1,4 @@
-class Multiset
+class Multiset<E>
 {
 
 }
