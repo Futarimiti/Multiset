@@ -6,13 +6,13 @@
 class Multiset<E>
 {
     /**
-     * stores distinct values in this multiset.
+     * stores distinct elements in this multiset.
      */
-    val values : MutableList<E> = mutableListOf()
+    val elements : MutableList<E> = mutableListOf()
 
     /**
-     * stores frequencies of every distinct value
-     * indices corresponding to $values.
+     * stores multiplicity, or frequencies of every element
+     * indices corresponding to $elements.
      */
-    val freq : MutableList<Int> = mutableListOf()
+    val multiplicity : MutableList<Int> = mutableListOf()
 }
