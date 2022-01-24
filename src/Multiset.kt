@@ -33,12 +33,11 @@ class Multiset<E>
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
 	 * multiplicity should be at least 0.
-	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
 	fun add(elem : E , freq : Int = 1)
 	{
-		// filter illegal arg
-		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
+		require(freq >= 0) {"Element multiplicity cannot be negative: $freq"}
+
 		val index : Int = this.elements0.indexOf(elem)
 
 		// new element for this multiset
@@ -72,15 +71,13 @@ class Multiset<E>
 	 * removes an element from this multiset with specified multiplicity (by default 1).
 	 * does not remove if the specified freq is higher than that of the element in this multiset.
 	 * @return true on a successful removal, otherwise false.
-	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
 	fun remove(elem : E , freq : Int = 1) : Boolean
 	{
-		// filter illegal arg
-		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
+		require(freq >= 0) {"Element multiplicity cannot be negative: $freq"}
 
 		val index : Int = this.elements0.indexOf(elem)
-		if (index == -1 || this.multiplicities0[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
+		if (index == -1 || this.multiplicities0[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount
 
 		this.multiplicities0[index] -= freq
 		if (multiplicities0[index] == 0)
