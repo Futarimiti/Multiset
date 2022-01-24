@@ -149,11 +149,11 @@ class Multiset<E>
  	{
  		elem : E ->
  		val index : Int = this.elements0.indexOf(elem)
-		
+
  		if (index == -1) 0
  		else this.multiplicities0[index]
  	}
-	
+
 	/**
 	 * size of this multiset.
 	 */
@@ -161,14 +161,14 @@ class Multiset<E>
 		get()
 		{
 			var size = 0
-			for (i in multiplicities)
+			for (i in multiplicities0)
 			{
 				size += i
 			}
 
 			return size
 		}
-	
+
 	override fun toString() : String
 	{
 		var list : MutableList<E> = mutableListOf()
