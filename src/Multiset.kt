@@ -9,12 +9,14 @@ class Multiset<E>
 	 * stores distinct elements in this multiset.
 	 */
 	val elements : MutableList<E> = mutableListOf()
+		private set
 
 	/**
 	 * stores multiplicity, or frequencies of every element
 	 * indices corresponding to $elements.
 	 */
 	val multiplicities : MutableList<Int> = mutableListOf()
+		private set
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
