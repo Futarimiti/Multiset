@@ -68,4 +68,23 @@ class Multiset<E>
 
 		return true
 	}
+
+	/**
+	 * removes every occurrence of the specified element from this multiset.
+	 * @return number of specified elements removed.
+	 */
+	fun removeAll(elem : E) : Int
+	{
+		var counter : Int = 0
+		var index : Int = this.elements.indexOf(elem)
+
+		while (index != -1)
+		{
+			this.elements.removeAt(index)
+			counter++
+			index = this.elements.indexOf(elem)
+		}
+
+		return counter
+	}
 }
