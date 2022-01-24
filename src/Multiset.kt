@@ -17,6 +17,11 @@ private constructor()
 	}
 
 	/**
+	 * creates an empty multiset instance.
+	 */
+	fun mutableMultisetOf() : MutableMultiset<E> = MutableMultiset()
+
+	/**
 	 * stores distinct elements in this multiset.
 	 */
 	private val elements0 : MutableList<E> = mutableListOf()
