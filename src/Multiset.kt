@@ -150,6 +150,21 @@ class Multiset<E>
 			return size
 		}
 
+	/**
+	 * performs the specified action for each element in this multiset, including duplicates.
+	 */
+	fun forEach(action : (E) -> Unit)
+	{
+		for (i in elements0.indices)
+		{
+			val currElem = elements0[i]
+			for (j in 1..multiplicities0[i])
+			{
+				action(currElem)
+			}
+		}
+	}
+
 	fun toString(separator : String) : String
 	{
 		val list : MutableList<E> = mutableListOf()
