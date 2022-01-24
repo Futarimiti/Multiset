@@ -27,7 +27,6 @@ class Multiset<E>
 		{
 			// filter illegal args
 			(freq < 0) -> throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
-			(freq == 0) -> return
 			else -> when (val index : Int = elements.indexOf(elem))
 			{
 				// new element for this multiset
