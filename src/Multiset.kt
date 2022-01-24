@@ -146,13 +146,13 @@ class Multiset<E>
 	 * returns number of occurrences of the specified element.
 	 */
 	val count : (E) -> Int =
- 	{
- 		elem : E ->
- 		val index : Int = this.elements0.indexOf(elem)
+		{
+			elem : E ->
+			val index : Int = this.elements0.indexOf(elem)
 
- 		if (index == -1) 0
- 		else this.multiplicities0[index]
- 	}
+			if (index == -1) 0
+			else this.multiplicities0[index]
+		}
 
 	/**
 	 * size of this multiset.
@@ -171,7 +171,7 @@ class Multiset<E>
 
 	override fun toString() : String
 	{
-		var list : MutableList<E> = mutableListOf()
+		val list : MutableList<E> = mutableListOf()
 
 		for (i in elements0.indices)
 		{
@@ -182,6 +182,6 @@ class Multiset<E>
 			}
 		}
 
-		return list.joinToString()
+		return list.joinToString(" , ")
 	}
 }
