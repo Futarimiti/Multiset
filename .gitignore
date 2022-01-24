@@ -30,3 +30,7 @@ hs_err_pid*
 # ignore all temp directories (temporary tests) and Main files (code tests) anywhere under src/
 src/**/temp
 src/**/Main.*
+
+# ignore vim swap files
+*.swp
+
