@@ -150,7 +150,7 @@ class Multiset<E>
 			return size
 		}
 
-	override fun toString() : String
+	fun toString(separator : String) : String
 	{
 		val list : MutableList<E> = mutableListOf()
 
@@ -163,6 +163,11 @@ class Multiset<E>
 			}
 		}
 
-		return list.joinToString(" , ")
+		return String.format("[%s]" , list.joinToString(separator = separator))
+	}
+
+	override fun toString() : String
+	{
+		return this.toString(separator = " , ")
 	}
 }
