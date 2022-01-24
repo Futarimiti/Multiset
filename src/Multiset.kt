@@ -49,4 +49,27 @@ class Multiset<E>
 	{
 		elements.forEach{this.add(it)}
 	}
+
+	/**
+	 * removes an element with specified multiplicity (by default 1).
+	 * @return true on a successful removal, otherwise false.
+	 * @throws IllegalArgumentException if the specified multiplicity is negative.
+	 */
+	fun remove(elem : E , freq : Int = 1) : Boolean
+	{
+		// filter illegal arg
+		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
+
+		val index : Int = this.elements.indexOf(elem)
+		if (index == -1 || this.multiplicity[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
+
+		this.multiplicity[index] -= freq
+		if (multiplicity[index] == 0)
+		{
+			this.elements.removeAt(index)
+			this.multiplicity.removeAt(index)
+		}
+
+		return true
+	}
 }
