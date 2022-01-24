@@ -34,3 +34,5 @@ src/**/Main.*
 # ignore vim swap files
 *.swp
 
+# META-INF directory (generated every kotlinc)
+META-INF
