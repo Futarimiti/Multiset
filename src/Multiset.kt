@@ -6,6 +6,9 @@
 class MutableMultiset<E>
 private constructor()
 {
+	/**
+	 * creates a multiset instance with specified elements.
+	 */
 	fun mutableMultisetOf(vararg elems : E) : MutableMultiset<E>
 	{
 		val multiset : MutableMultiset<E> = MutableMultiset()
