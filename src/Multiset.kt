@@ -203,8 +203,6 @@ private constructor()
 		return String.format("[%s]" , list.joinToString(separator = separator))
 	}
 
-	override fun toString() : String
-	{
-		return this.toString(separator = " , ")
-	}
+	override fun toString() : String = this.toString(separator = " , ")
+
 }
