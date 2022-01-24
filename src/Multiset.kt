@@ -47,7 +47,7 @@ class Multiset<E>
 	}
 
 	/**
-	 * removes an element with specified multiplicity (by default 1).
+	 * removes an element from this multiset with specified multiplicity (by default 1).
 	 * @return true on a successful removal, otherwise false.
 	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
