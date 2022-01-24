@@ -30,8 +30,7 @@ private constructor()
 	 * an immutable alias for $elements0
 	 * to prevent user from direct manipulation.
 	 */
-	val elements : List<E>
-		get() = this.elements0
+	val elements : List<E> = this.elements0
 
 	/**
 	 * stores multiplicity, or frequencies of every element
@@ -43,8 +42,7 @@ private constructor()
 	 * an immutable alias for $multiplicities0
 	 * to prevent user from direct manipulation.
 	 */
-	val multiplicities : List<Int>
-		get() = this.multiplicities0
+	val multiplicities : List<Int> = this.multiplicities0
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
