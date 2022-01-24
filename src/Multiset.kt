@@ -23,23 +23,19 @@ class Multiset<E>
 	 */
 	fun add(elem : E , freq : Int = 1)
 	{
-		when
-		{
-			// filter illegal args
-			(freq < 0) -> throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
-			else -> when (val index : Int = elements.indexOf(elem))
-			{
-				// new element for this multiset
-				-1 ->
-				{
-					elements += elem
-					multiplicities += freq
-				}
+		// filter illegal arg
+		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
+		val index : Int = this.elements.indexOf(elem)
 
-				// not a new element, add $freq only
-				else -> multiplicities[index] += freq
-			}
+		// new element for this multiset
+		if (index == -1)
+		{
+			elements += elem
+			multiplicities += freq
 		}
+
+		// not a new element, add $freq only
+		else multiplicities[index] += freq
 	}
 
 	/**
