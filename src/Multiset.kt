@@ -14,7 +14,7 @@ class Multiset<E>
 	 * stores multiplicity, or frequencies of every element
 	 * indices corresponding to $elements.
 	 */
-	val multiplicity : MutableList<Int> = mutableListOf()
+	val multiplicities : MutableList<Int> = mutableListOf()
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
@@ -33,11 +33,11 @@ class Multiset<E>
 				-1 ->
 				{
 					elements += elem
-					multiplicity += freq
+					multiplicities += freq
 				}
 
 				// not a new element, add $freq only
-				else -> multiplicity[index] += freq
+				else -> multiplicities[index] += freq
 			}
 		}
 	}
@@ -61,13 +61,13 @@ class Multiset<E>
 		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
 
 		val index : Int = this.elements.indexOf(elem)
-		if (index == -1 || this.multiplicity[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
+		if (index == -1 || this.multiplicities[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
 
-		this.multiplicity[index] -= freq
-		if (multiplicity[index] == 0)
+		this.multiplicities[index] -= freq
+		if (multiplicities[index] == 0)
 		{
 			this.elements.removeAt(index)
-			this.multiplicity.removeAt(index)
+			this.multiplicities.removeAt(index)
 		}
 
 		return true
