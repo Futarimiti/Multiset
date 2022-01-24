@@ -145,7 +145,7 @@ class Multiset<E>
 	/**
 	 * returns number of occurrences of the specified element.
 	 */
-	 val count : (E) -> Int =
+	val count : (E) -> Int =
  	{
  		elem : E ->
  		val index : Int = this.elements0.indexOf(elem)
