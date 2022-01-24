@@ -101,7 +101,7 @@ class Multiset<E>
 	/**
 	 * checks if this multiset contains at least 1 of the specified element.
 	 */
-	fun contains(elem : E) : Boolean
+	operator fun contains(elem : E) : Boolean
 	{
 		return elements.contains(elem)
 	}
