@@ -15,10 +15,7 @@ class Multiset<E>
 	 * to prevent user from direct manipulation.
 	 */
 	val elements : List<E>
-		get()
-		{
-			return this.elements0
-		}
+		get() = this.elements0
 
 	/**
 	 * stores multiplicity, or frequencies of every element
@@ -31,10 +28,7 @@ class Multiset<E>
 	 * to prevent user from direct manipulation.
 	 */
 	val multiplicities : List<Int>
-		get()
-		{
-			return this.multiplicities0
-		}
+		get() = this.multiplicities0
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
@@ -61,27 +55,18 @@ class Multiset<E>
 	/**
 	 * operator overload: += as `add`
 	 */
-	operator fun plusAssign(e : E)
-	{
-		this.add(e)
-	}
+	operator fun plusAssign(e : E) = this.add(e)
 
 	/**
 	 * adds elements in bulk to this multiset with each element once.
 	 */
-	fun addAll(vararg elements : E)
-	{
-		elements.forEach{this.add(it)}
-	}
+	fun addAll(vararg elements : E) = elements.forEach{this.add(it)}
 
 	/**
 	 * adds all elements in a collection to this multiset
 	 * with each element once.
 	 */
-	fun addAll(c : Collection<E>)
-	{
-		c.forEach{this.add(it)}
-	}
+	fun addAll(c : Collection<E>) = c.forEach{this.add(it)}
 
 	/**
 	 * removes an element from this multiset with specified multiplicity (by default 1).
@@ -137,10 +122,7 @@ class Multiset<E>
 	/**
 	 * checks if this multiset contains at least 1 of the specified element.
 	 */
-	operator fun contains(elem : E) : Boolean
-	{
-		return elements0.contains(elem)
-	}
+	operator fun contains(elem : E) : Boolean = elements0.contains(elem)
 
 	/**
 	 * returns number of occurrences of the specified element.
