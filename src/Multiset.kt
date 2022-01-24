@@ -11,6 +11,7 @@ private constructor()
 		/**
 		 * creates a multiset instance with specified elements.
 		 */
+		@JvmStatic
 		fun <E> mutableMultisetOf(vararg elems : E) : MutableMultiset<E>
 		{
 			val multiset : MutableMultiset<E> = MutableMultiset()
@@ -21,6 +22,7 @@ private constructor()
 		/**
 		 * creates an empty multiset instance.
 		 */
+		@JvmStatic
 		fun <E> mutableMultisetOf() : MutableMultiset<E> = MutableMultiset()
 	}
 
