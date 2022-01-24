@@ -45,9 +45,8 @@ class Multiset<E>
 
 	/**
 	 * adds elements in bulk to this multiset with each element once.
-	 * may conflict with add(E , Int) for 2 Int varargs
 	 */
-	fun add(vararg elements : E)
+	fun addAll(vararg elements : E)
 	{
 		elements.forEach{this.add(it)}
 	}
