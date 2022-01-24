@@ -150,6 +150,9 @@ class Multiset<E>
 			return size
 		}
 
+	val isEmpty : Boolean
+		get() = this.elements0.size == 0
+
 	/**
 	 * performs the specified action for each element in this multiset, including duplicates.
 	 */
