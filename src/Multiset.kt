@@ -4,7 +4,15 @@
  * ref: https://en.wikipedia.org/wiki/Multiset
  */
 class MutableMultiset<E>
+private constructor()
 {
+	fun mutableMultisetOf(vararg elems : E) : MutableMultiset<E>
+	{
+		val multiset : MutableMultiset<E> = MutableMultiset()
+		multiset.addAll(*elems)
+		return multiset
+	}
+
 	/**
 	 * stores distinct elements in this multiset.
 	 */
