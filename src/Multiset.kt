@@ -8,13 +8,33 @@ class Multiset<E>
 	/**
 	 * stores distinct elements in this multiset.
 	 */
-	val elements : MutableList<E> = mutableListOf()
+	private val elements0 : MutableList<E> = mutableListOf()
+
+	/**
+	 * an immutable alias for $elements0
+	 * to prevent user from direct manipulation.
+	 */
+	val elements : List<E>
+		get()
+		{
+			return this.elements0
+		}
 
 	/**
 	 * stores multiplicity, or frequencies of every element
 	 * indices corresponding to $elements.
 	 */
-	val multiplicities : MutableList<Int> = mutableListOf()
+	private val multiplicities0 : MutableList<Int> = mutableListOf()
+
+	/**
+	 * an immutable alias for $multiplicities0
+	 * to prevent user from direct manipulation.
+	 */
+	val multiplicities : List<Int>
+		get()
+		{
+			return this.multiplicities0
+		}
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
@@ -25,17 +45,17 @@ class Multiset<E>
 	{
 		// filter illegal arg
 		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
-		val index : Int = this.elements.indexOf(elem)
+		val index : Int = this.elements0.indexOf(elem)
 
 		// new element for this multiset
 		if (index == -1)
 		{
-			elements += elem
-			multiplicities += freq
+			elements0 += elem
+			multiplicities0 += freq
 		}
 
 		// not a new element, add $freq only
-		else multiplicities[index] += freq
+		else multiplicities0[index] += freq
 	}
 
 	/**
@@ -74,14 +94,14 @@ class Multiset<E>
 		// filter illegal arg
 		if (freq < 0) throw IllegalArgumentException("Element multiplicity cannot be negative: $freq")
 
-		val index : Int = this.elements.indexOf(elem)
-		if (index == -1 || this.multiplicities[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
+		val index : Int = this.elements0.indexOf(elem)
+		if (index == -1 || this.multiplicities0[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount for removal
 
-		this.multiplicities[index] -= freq
-		if (multiplicities[index] == 0)
+		this.multiplicities0[index] -= freq
+		if (multiplicities0[index] == 0)
 		{
-			this.elements.removeAt(index)
-			this.multiplicities.removeAt(index)
+			this.elements0.removeAt(index)
+			this.multiplicities0.removeAt(index)
 		}
 
 		return true
@@ -102,13 +122,13 @@ class Multiset<E>
 	fun removeAll(elem : E) : Int
 	{
 		var counter : Int = 0
-		var index : Int = this.elements.indexOf(elem)
+		var index : Int = this.elements0.indexOf(elem)
 
 		while (index != -1)
 		{
-			this.elements.removeAt(index)
+			this.elements0.removeAt(index)
 			counter++
-			index = this.elements.indexOf(elem)
+			index = this.elements0.indexOf(elem)
 		}
 
 		return counter
@@ -119,7 +139,7 @@ class Multiset<E>
 	 */
 	operator fun contains(elem : E) : Boolean
 	{
-		return elements.contains(elem)
+		return elements0.contains(elem)
 	}
 
 	/**
@@ -127,9 +147,9 @@ class Multiset<E>
 	 */
 	fun getMultiplicity(elem : E) : Int
 	{
-		val index : Int = this.elements.indexOf(elem)
+		val index : Int = this.elements0.indexOf(elem)
 		if (index == -1) return 0
 
-		return this.multiplicities[index]
+		return this.multiplicities0[index]
 	}
 }
