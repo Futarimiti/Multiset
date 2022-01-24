@@ -88,4 +88,12 @@ class Multiset<E>
 
 		return counter
 	}
+
+	/**
+	 * checks if this multiset contains at least 1 of the specified element.
+	 */
+	fun contains(elem : E) : Boolean
+	{
+		return elements.contains(elem)
+	}
 }
