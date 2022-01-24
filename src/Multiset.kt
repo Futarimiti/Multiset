@@ -168,4 +168,20 @@ class Multiset<E>
 
 			return size
 		}
+	
+	override fun toString() : String
+	{
+		var list : MutableList<E> = mutableListOf()
+
+		for (i in elements0.indices)
+		{
+			val currElem = elements0[i]
+			for (j in 1..multiplicities0[i])
+			{
+				list += currElem
+			}
+		}
+
+		return list.joinToString()
+	}
 }
