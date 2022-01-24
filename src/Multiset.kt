@@ -145,7 +145,7 @@ class Multiset<E>
 	/**
 	 * returns number of occurrences of the specified element.
 	 */
-	fun getMultiplicity(elem : E) : Int
+	val count : (E) -> Int = fun(elem : E) : Int
 	{
 		val index : Int = this.elements0.indexOf(elem)
 		if (index == -1) return 0
