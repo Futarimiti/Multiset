@@ -153,4 +153,19 @@ class Multiset<E>
  		if (index == -1) 0
  		else this.multiplicities0[index]
  	}
+	
+	/**
+	 * size of this multiset.
+	 */
+	val size : Int
+		get()
+		{
+			var size = 0
+			for (i in multiplicities)
+			{
+				size += i
+			}
+
+			return size
+		}
 }
