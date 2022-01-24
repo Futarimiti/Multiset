@@ -33,6 +33,7 @@ class Multiset<E>
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
 	 * multiplicity should be at least 0.
+	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
 	fun add(elem : E , freq : Int = 1)
 	{
@@ -71,6 +72,7 @@ class Multiset<E>
 	 * removes an element from this multiset with specified multiplicity (by default 1).
 	 * does not remove if the specified freq is higher than that of the element in this multiset.
 	 * @return true on a successful removal, otherwise false.
+	 * @throws IllegalArgumentException if the specified multiplicity is negative.
 	 */
 	fun remove(elem : E , freq : Int = 1) : Boolean
 	{
