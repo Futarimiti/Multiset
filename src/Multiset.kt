@@ -6,20 +6,23 @@
 class MutableMultiset<E>
 private constructor()
 {
-	/**
-	 * creates a multiset instance with specified elements.
-	 */
-	fun mutableMultisetOf(vararg elems : E) : MutableMultiset<E>
+	companion object
 	{
-		val multiset : MutableMultiset<E> = MutableMultiset()
-		multiset.addAll(*elems)
-		return multiset
-	}
+		/**
+		 * creates a multiset instance with specified elements.
+		 */
+		fun <E> mutableMultisetOf(vararg elems : E) : MutableMultiset<E>
+		{
+			val multiset : MutableMultiset<E> = MutableMultiset()
+			multiset.addAll(*elems)
+			return multiset
+		}
 
-	/**
-	 * creates an empty multiset instance.
-	 */
-	fun mutableMultisetOf() : MutableMultiset<E> = MutableMultiset()
+		/**
+		 * creates an empty multiset instance.
+		 */
+		fun <E> mutableMultisetOf() : MutableMultiset<E> = MutableMultiset()
+	}
 
 	/**
 	 * stores distinct elements in this multiset.
