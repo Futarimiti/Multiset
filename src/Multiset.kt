@@ -49,6 +49,15 @@ class Multiset<E>
 	}
 
 	/**
+	 * adds all elements in a collection to this multiset
+	 * with each element once.
+	 */
+	fun addAll(c : Collection<E>)
+	{
+		c.forEach{this.add(it)}
+	}
+
+	/**
 	 * removes an element from this multiset with specified multiplicity (by default 1).
 	 * does not remove if the specified freq is higher than that of the element in this multiset.
 	 * @return true on a successful removal, otherwise false.
