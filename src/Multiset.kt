@@ -39,6 +39,14 @@ class Multiset<E>
 	}
 
 	/**
+	 * operator overload: += as `add`
+	 */
+	operator fun plusAssign(e : E)
+	{
+		this.add(e)
+	}
+
+	/**
 	 * adds elements in bulk to this multiset with each element once.
 	 */
 	fun addAll(vararg elements : E)
@@ -77,6 +85,14 @@ class Multiset<E>
 		}
 
 		return true
+	}
+
+	/**
+	 * operator overload: -= as `remove`
+	 */
+	operator fun minusAssign(e : E)
+	{
+		this.remove(e)
 	}
 
 	/**
