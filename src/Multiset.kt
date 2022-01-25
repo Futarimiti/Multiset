@@ -29,29 +29,29 @@ private constructor()
 	/**
 	 * stores distinct elements in this multiset.
 	 */
-	private val elements0 : MutableList<E> = mutableListOf()
+	private val _elements : MutableList<E> = mutableListOf()
 
 	/**
-	 * a fake reference to $elements0 avoiding direct manipulation from user.
-	 * returns a copy of $elements0, hence modifications made does not matter.
-	 * intended to be used by user only; within this class, use $elements0.
+	 * a fake reference to $_elements avoiding direct manipulation from user.
+	 * returns a copy of $_elements, hence modifications made does not matter.
+	 * intended to be used by user only; within this class, use $_elements.
 	 */
 	val elements : MutableList<E>
-		get() = this.elements0.toMutableList()
+		get() = this._elements.toMutableList()
 
 	/**
 	 * stores multiplicity, or frequencies of every element
 	 * indices corresponding to $elements.
 	 */
-	private val multiplicities0 : MutableList<Int> = mutableListOf()
+	private val _multiplicities : MutableList<Int> = mutableListOf()
 
 	/**
-	 * a fake reference to $multiplicities0 avoiding direct manipulation from user.
-	 * returns a copy of $multiplicities0, hence modifications made does not matter.
-	 * intended to be used by user only; within this class, use $multiplicities0.
+	 * a fake reference to $_multiplicities avoiding direct manipulation from user.
+	 * returns a copy of $_multiplicities, hence modifications made does not matter.
+	 * intended to be used by user only; within this class, use $_multiplicities.
 	 */
 	val multiplicities : MutableList<Int>
-		get() = this.multiplicities0.toMutableList()
+		get() = this._multiplicities.toMutableList()
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
@@ -62,17 +62,17 @@ private constructor()
 	{
 		require(freq >= 0) {"Element multiplicity cannot be negative: $freq"}
 
-		val index : Int = this.elements0.indexOf(elem)
+		val index : Int = this._elements.indexOf(elem)
 
 		// new element for this multiset
 		if (index == -1)
 		{
-			elements0 += elem
-			multiplicities0 += freq
+			_elements += elem
+			_multiplicities += freq
 		}
 
 		// not a new element, add $freq only
-		else multiplicities0[index] += freq
+		else _multiplicities[index] += freq
 	}
 
 	/**
@@ -101,14 +101,14 @@ private constructor()
 	{
 		require(freq >= 0) {"Element multiplicity cannot be negative: $freq"}
 
-		val index : Int = this.elements0.indexOf(elem)
-		if (index == -1 || this.multiplicities0[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount
+		val index : Int = this._elements.indexOf(elem)
+		if (index == -1 || this._multiplicities[index] < freq) return false // no such element in this multiset, or multiplicity does not meet desired amount
 
-		this.multiplicities0[index] -= freq
-		if (multiplicities0[index] == 0)
+		this._multiplicities[index] -= freq
+		if (_multiplicities[index] == 0)
 		{
-			this.elements0.removeAt(index)
-			this.multiplicities0.removeAt(index)
+			this._elements.removeAt(index)
+			this._multiplicities.removeAt(index)
 		}
 
 		return true
@@ -129,13 +129,13 @@ private constructor()
 	fun removeAll(elem : E) : Int
 	{
 		var counter : Int = 0
-		var index : Int = this.elements0.indexOf(elem)
+		var index : Int = this._elements.indexOf(elem)
 
 		while (index != -1)
 		{
-			this.elements0.removeAt(index)
+			this._elements.removeAt(index)
 			counter++
-			index = this.elements0.indexOf(elem)
+			index = this._elements.indexOf(elem)
 		}
 
 		return counter
@@ -144,7 +144,7 @@ private constructor()
 	/**
 	 * checks if this multiset contains at least 1 of the specified element.
 	 */
-	operator fun contains(elem : E) : Boolean = elements0.contains(elem)
+	operator fun contains(elem : E) : Boolean = _elements.contains(elem)
 
 	/**
 	 * returns number of occurrences of the specified element.
@@ -152,10 +152,10 @@ private constructor()
 	val count : (E) -> Int =
 		{
 			elem : E ->
-			val index : Int = this.elements0.indexOf(elem)
+			val index : Int = this._elements.indexOf(elem)
 
 			if (index == -1) 0
-			else this.multiplicities0[index]
+			else this._multiplicities[index]
 		}
 
 	/**
@@ -165,7 +165,7 @@ private constructor()
 		get()
 		{
 			var size = 0
-			for (i in multiplicities0)
+			for (i in _multiplicities)
 			{
 				size += i
 			}
@@ -174,17 +174,17 @@ private constructor()
 		}
 
 	val isEmpty : Boolean
-		get() = this.elements0.size == 0
+		get() = this._elements.size == 0
 
 	/**
 	 * performs the specified action for each element in this multiset, including duplicates.
 	 */
 	fun forEach(action : (E) -> Unit)
 	{
-		for (i in elements0.indices)
+		for (i in _elements.indices)
 		{
-			val currElem = elements0[i]
-			for (j in 1..multiplicities0[i])
+			val currElem = _elements[i]
+			for (j in 1.._multiplicities[i])
 			{
 				action(currElem)
 			}
@@ -195,10 +195,10 @@ private constructor()
 	{
 		val list : MutableList<E> = mutableListOf()
 
-		for (i in elements0.indices)
+		for (i in _elements.indices)
 		{
-			val currElem = elements0[i]
-			for (j in 1..multiplicities0[i])
+			val currElem = _elements[i]
+			for (j in 1.._multiplicities[i])
 			{
 				list += currElem
 			}
