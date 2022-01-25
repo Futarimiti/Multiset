@@ -1,8 +1,8 @@
 import java.util.LinkedList
 
 /**
- * represents a multiset:
- * a modification of set that allows for multiple instances for each of its elements.
+ * represents a mutable multiset.
+ * multiset: a modification of set that allows for multiple instances for each of its elements.
  * ref: https://en.wikipedia.org/wiki/Multiset
  */
 class MutableMultiset<E>
@@ -34,7 +34,7 @@ private constructor()
 	private val _elements : MutableList<E> = mutableListOf()
 
 	/**
-	 * a fake reference to $_elements avoiding direct manipulation from user.
+	 * a backing property of $_elements avoiding direct manipulation from user.
 	 * returns a copy of $_elements, hence modifications made does not matter.
 	 * intended to be used by user only; within this class, use $_elements.
 	 */
@@ -48,7 +48,7 @@ private constructor()
 	private val _multiplicities : MutableList<Int> = mutableListOf()
 
 	/**
-	 * a fake reference to $_multiplicities avoiding direct manipulation from user.
+	 * a backing property of $_multiplicities avoiding direct manipulation from user.
 	 * returns a copy of $_multiplicities, hence modifications made does not matter.
 	 * intended to be used by user only; within this class, use $_multiplicities.
 	 */
@@ -210,5 +210,4 @@ private constructor()
 	}
 
 	override fun toString() : String = this.toString(separator = " , ")
-
 }
