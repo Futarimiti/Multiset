@@ -1,3 +1,5 @@
+import java.util.LinkedList
+
 /**
  * represents a multiset:
  * a modification of set that allows for multiple instances for each of its elements.
@@ -193,7 +195,7 @@ private constructor()
 
 	fun toString(separator : String) : String
 	{
-		val list : MutableList<E> = mutableListOf()
+		val list : MutableList<E> = LinkedList()
 
 		for (i in _elements.indices)
 		{
