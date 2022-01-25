@@ -32,10 +32,12 @@ private constructor()
 	private val elements0 : MutableList<E> = mutableListOf()
 
 	/**
-	 * an immutable alias for $elements0
-	 * to prevent user from direct manipulation.
+	 * a fake reference to $elements0 avoiding direct manipulation from user.
+	 * returns a copy of $elements0, hence modifications made does not matter.
+	 * intended to be used by user only; within this class, use $elements0.
 	 */
-	val elements : List<E> = this.elements0
+	val elements : MutableList<E>
+		get() = this.elements0.toMutableList()
 
 	/**
 	 * stores multiplicity, or frequencies of every element
@@ -44,10 +46,12 @@ private constructor()
 	private val multiplicities0 : MutableList<Int> = mutableListOf()
 
 	/**
-	 * an immutable alias for $multiplicities0
-	 * to prevent user from direct manipulation.
+	 * a fake reference to $multiplicities0 avoiding direct manipulation from user.
+	 * returns a copy of $multiplicities0, hence modifications made does not matter.
+	 * intended to be used by user only; within this class, use $multiplicities0.
 	 */
-	val multiplicities : List<Int> = this.multiplicities0
+	val multiplicities : MutableList<Int>
+		get() = this.multiplicities0.toMutableList()
 
 	/**
 	 * adds an element to this multiset with specified multiplicity (by default 1).
